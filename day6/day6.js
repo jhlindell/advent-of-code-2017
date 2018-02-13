@@ -71,10 +71,45 @@ function checkMemorySnapshot(array, string){
   return true;
 }
 
+function reMemory2(input){
+  let memory = input;
+  let index = 0;
+  let memoryState = [];
+  let notDone = true;
+  let currentMemoryState;
+  let iterations = 0;
+  let loop2 = false;
+  let secondCounter = -1;
+  while(notDone){
+    index = findHighest(memory);
+    redistributeBlocks(memory, index);
+    currentMemoryState = getMemorySnapshot(memory);
+    let check = checkMemorySnapshot(memoryState, currentMemoryState);
+    if(check){
+      memoryState.push(currentMemoryState);
+    } else {
+      if(loop2){
+        notDone = false;
+      } else {
+        loop2 = true;
+        memoryState = [];
+        memoryState.push(currentMemoryState);
+      }
+    }
+    if(loop2){
+      secondCounter++
+    } else {
+      iterations++;
+    }
+  }
+  return secondCounter;
+}
+
 module.exports = {
   reMemory,
   findHighest,
   redistributeBlocks,
   getMemorySnapshot,
-  checkMemorySnapshot
+  checkMemorySnapshot,
+  reMemory2
 };

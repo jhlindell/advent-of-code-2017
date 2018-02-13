@@ -5,13 +5,14 @@ const {
   findHighest,
   redistributeBlocks,
   getMemorySnapshot,
-  checkMemorySnapshot
+  checkMemorySnapshot,
+  reMemory2
 } = require('./day6');
 
 const test1 = [0,2,7,0];
 const test2 = [4,1,15,12,0,9,9,5,5,8,7,3,14,5,12,3];
 
-describe('day 6 tests', function(){
+describe('day 6 part 1 tests', function(){
   it('should properly return the index of the highest element in the array', function(){
     let highestNum = findHighest(test2);
     assert.equal(highestNum, 2);
@@ -48,5 +49,13 @@ describe('day 6 tests', function(){
     let numberOfReallocations = reMemory(test2);
     console.log('numberOfReallocations: ', numberOfReallocations);
     assert.notEqual(numberOfReallocations, 0);
+  })
+});
+
+describe('day 6 part 2 tests', function(){
+  it('should test number of loops to get to second similar state', function(){
+    let numLoops = reMemory2(test2);
+    console.log("number of loops: ", numLoops);
+    assert.notEqual(numLoops, 0);
   })
 });
