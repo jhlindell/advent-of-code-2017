@@ -16,4 +16,26 @@ function captcha(string){
   return resultSum;
 }
 
-module.exports = captcha;
+function captcha2(string){
+  let array = string.split('');
+  let resultSum = 0;
+  let nextNum;
+  let length = array.length;
+  let half = length/2;
+  let nextIndex;
+  for(let i = 0; i < length; i++){
+    nextIndex = i + half;
+    if(nextIndex > length-1){
+      nextIndex -= length;
+    }
+    if(array[i] === array[nextIndex]){
+      resultSum += Number(array[i]);
+    }
+  }
+  return resultSum;
+}
+
+module.exports = {
+  captcha,
+  captcha2
+};

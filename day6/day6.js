@@ -2,7 +2,6 @@ function reMemory(input){
   let memory = input;
   let index = 0;
   let memoryState = [];
-  let blocks = 0;
   let notDone = true;
   let currentMemoryState;
   let iterations = 0;
